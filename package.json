@@ -4,7 +4,9 @@
   "description": "file manager for internal use @EPAM",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pass": "node index.js script.txt",
+    "fail": "node index.js"   
   },
   "repository": {
     "type": "git",
