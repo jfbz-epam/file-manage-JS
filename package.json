@@ -1,0 +1,19 @@
+{
+  "name": "file-manage-js",
+  "version": "1.0.0",
+  "description": "file manager for internal use @EPAM",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jfbz-epam/file-manage-JS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jfbz-epam/file-manage-JS/issues"
+  },
+  "homepage": "https://github.com/jfbz-epam/file-manage-JS#readme"
+}
