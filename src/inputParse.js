@@ -5,7 +5,7 @@ const methods = require('./methods')
  * Then they are used to determine operation and execute it.
  * CREATE, DELETE and MOVE are filtered again inside doUpdate method.
  *
- * @param {[]}  arr array containing folder structure
+ * @param {StructureNode}  myStructure root folder structure
  * @param {string} line command received from CLI
  */
 module.exports = (line, myStructure) => {

@@ -4,14 +4,13 @@ const { find, findDestination } = require('../utilities/mutation.helper')
 
 /**
  * Handler of MOVE, CREATE and DELETE request.
- * 1st switch: performs operation for folders on root directory
- * 2nd switch: performs operation for folders on root subdirectory
- * 3rd switch: error messages.
- * @param {[]}  arr array containing folder structure
+ * 1st switch: sort mutations
+ * 2nd switch: error messages.
+ * @param {StructureNode}  myStructure array containing folder structure
  * @param {string} params contains command from the CLI
  */
-function mutate (arr, params) {
-  let current = arr
+function mutate (myStructure, params) {
+  let current = myStructure
   const folders = params[1].split('/')
   let now = folders.shift()
   try {
@@ -27,7 +26,7 @@ function mutate (arr, params) {
         remove(now, current)
         break
       case 'MOVE':
-        move(current, find(now, current), params[2], arr)
+        move(current, find(now, current), params[2], myStructure)
         break
       default:
         break
@@ -49,34 +48,34 @@ function mutate (arr, params) {
 /**
  * Creates folder at the array received with the name param.
  *
- * @param {[]}  arr array containing folder structure
+ * @param {StructureNode}  myStructure contains parent folder structure
  * @param {string} name contains name of the folder to be created.
  */
-function create (name, arr) {
+function create (name, myStructure) {
   const struct = new StructureNode(name)
-  arr.addChild(struct)
+  myStructure.addChild(struct)
 }
 
 /**
  * Removes folder that mathes name param at the array received.
  *
- * @param {[]}  arr array containing folder structure
+ * @param {StructureNode}  myStructure contains parent folder structure
  * @param {string} name contains name of the folder to be removed
  */
-function remove (name, arr) {
-  arr.removeChild(find(name, arr))
+function remove (name, myStructure) {
+  myStructure.removeChild(find(name, myStructure))
 }
 
 /**
  * Moves folder located at current that matches index to the destination received.
  *
- * @param {[]} current folder containing file to be moved.
+ * @param {StructureNode} current structure containing folder to be moved.
  * @param {int} index index of the folder to be moved
  * @param {string} destination path for the new location
- * @param {[]}  arr array containing folder structure
+ * @param {StructureNode}  myStructure contains parent folder structure
  */
-function move (current, index, destination, arr) {
-  findDestination(arr, destination).addChild(current.getChild(index))
+function move (current, index, destination, myStructure) {
+  findDestination(myStructure, destination).addChild(current.getChild(index))
   current.removeChild(index)
 }
 

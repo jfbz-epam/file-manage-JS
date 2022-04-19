@@ -7,8 +7,8 @@ if (!process.argv[2]) throw new Error('filename cannot be empty')
 
 /**
  * performs request of the CLI
- *
  * @param {string} params line from the CLI
+ * @param {StructureNode} struct root structure
  */
 function doRequest (params, struct) {
   const command = params.split(' ')
@@ -16,10 +16,6 @@ function doRequest (params, struct) {
     inputParse(command, struct)
   }
 }
-
-/**
- *
- */
 
 const myStructure = new StructureNode('root')
 const fileName = process.argv[2]

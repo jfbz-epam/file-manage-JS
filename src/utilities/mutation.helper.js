@@ -26,11 +26,11 @@ function findDestination (arr, sufix) {
  * finds index of the folder searched
  *
  * @param {string} toFind name of folder to be found
- * @param {[]}  arr array containing folder structure
+ * @param {StructureNode}  myStructure array containing folder structure
  * @returns {int} index returns int with folder index. Otherwise a exception is returned.
  */
-function find (name, arr) {
-  const index = arr.findChildIndex(name)
+function find (name, myStructure) {
+  const index = myStructure.findChildIndex(name)
   if (index === -1) {
     throw new Error('not found')
   } else {
