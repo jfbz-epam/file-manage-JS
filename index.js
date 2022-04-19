@@ -1,39 +1,40 @@
-const readline = require('readline');
 const inputParse = require('./src/inputParse');
-const folder = require('./src/objects/folder');
 const validators = require('./src/validators')
 const fs = require('fs');
+const { StructureNode } = require('./src/objects/struct');
 
-let myStructure = folder('root');
-let fileName;
+
+
+
+if (!process.argv[2]) throw new Error(`filename cannot be empty`);
+
+
 
 /**
  * performs request of the CLI
  *
  * @param {string} params line from the CLI
  */
-function doRequest(params) {
+function doRequest(params, struct) {
   let command = params.split(' ');
-  if (validators.validateMethod(command[0])==true){
-    inputParse(command, myStructure.inside);  
+  if (validators.validateMethod(command[0])){
+    inputParse(command, struct);  
   }
 }
 
 /**
- * reads 3rd argument from CLI. if empty message "filename cannot be empty" will
- * be displayed. otherwise it will read  file line by line. 
  *
  */
 try {
-  fileName=process.argv[2];
+  let myStructure = new StructureNode('root');
+  let fileName=process.argv[2];
   const allFileContents = fs.readFileSync(fileName, 'utf-8');
   allFileContents.split(/\r?\n/).forEach(line =>  {
-    doRequest(line);
+    doRequest(line, myStructure);
   });
   process.exit(0);
 } catch (error) {
-  console.log(`filename cannot be empty`);
-  process.exit(1);
+  throw error;
 }
 
 

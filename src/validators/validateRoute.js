@@ -6,5 +6,5 @@
  * @returns {folder} if found returns the folder object searched, otherwise returns undefined.
  */
 module.exports=(toSearch, arr) => {
-  return arr.find(x => x.name == toSearch); 
+  return arr.getInner().find(x => x.getName() == toSearch); 
 }

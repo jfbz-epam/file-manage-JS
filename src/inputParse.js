@@ -8,16 +8,16 @@ const methods = require('./methods');
  * @param {[]}  arr array containing folder structure
  * @param {string} line command received from CLI
  */
-module.exports=(line, arr) => {
+module.exports=(line, myStructure) => {
   console.log(line.join(' '));
   switch (line[0]) {
     case 'CREATE':
     case 'DELETE':  
     case 'MOVE':   
-      methods.Update.doUpdate(arr, line);     
+      methods.mutate(myStructure, line);     
       break;
     case 'LIST':   
-      methods.List.doList(arr, 0);      
+      methods.list(myStructure, 0);      
       break;
     default:
       break;

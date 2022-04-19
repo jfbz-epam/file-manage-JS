@@ -1,4 +1,4 @@
-const List = require ('./LIST');
-const Update = require ('./UPDATE');
+const list = require ('./LIST').doList;
+const mutate = require ('./MUTATION').mutate;
 
-module.exports = {List,Update};
+module.exports = {list,mutate};
