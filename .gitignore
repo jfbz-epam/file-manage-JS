@@ -107,3 +107,4 @@ dist
 #Personal Environment
 .vscode/launch.json
 script.txt
+package-lock.json

@@ -1,6 +1,6 @@
-module.exports=[
-    'CREATE',
-    'DELETE',
-    'LIST',
-    'MOVE'
-];
+module.exports = [
+  'CREATE',
+  'DELETE',
+  'LIST',
+  'MOVE'
+]

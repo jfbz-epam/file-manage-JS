@@ -5,6 +5,6 @@
  * @param {[]}  arr array containing folder structure
  * @returns {folder} if found returns the folder object searched, otherwise returns undefined.
  */
-module.exports=(toSearch, arr) => {
-  return arr.getInner().find(x => x.getName() == toSearch); 
+module.exports = (toSearch, arr) => {
+  return arr.getInner().find(x => x.getName() === toSearch)
 }
