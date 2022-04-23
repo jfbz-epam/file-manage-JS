@@ -1,4 +1,4 @@
-const methods = require('./methods')
+const methods = require('./methods');
 
 /**
  * Receives root folder structure and line from the CLI.
@@ -9,17 +9,17 @@ const methods = require('./methods')
  * @param {string} line command received from CLI
  */
 module.exports = (line, myStructure) => {
-  console.log(line.join(' '))
+  process.stdout.write(`${line.join(' ')}\n`);
   switch (line[0]) {
     case 'CREATE':
     case 'DELETE':
     case 'MOVE':
-      methods.mutate(myStructure, line)
-      break
+      methods.mutate(myStructure, line);
+      break;
     case 'LIST':
-      methods.list(myStructure, 0)
-      break
+      methods.list(myStructure, 0);
+      break;
     default:
-      break
+      break;
   }
-}
+};

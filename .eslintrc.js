@@ -3,14 +3,16 @@ module.exports = {
     browser: true,
     commonjs: true,
     es2021: true,
-    jest: true
+    jest: true,
   },
+  parser: '@babel/eslint-parser',
   extends: [
-    'standard'
+    'airbnb',
   ],
   parserOptions: {
-    ecmaVersion: 'latest'
+    ecmaVersion: 'latest',
+    sourceType: 'module',
   },
   rules: {
-  }
-}
+  },
+};

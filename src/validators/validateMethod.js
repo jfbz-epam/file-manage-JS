@@ -1,4 +1,4 @@
-const methods = require('../consts/methods')
+const methods = require('../consts/methods');
 
 /**
  * checks if method received by CLI is valid. if is invalid returns
@@ -6,6 +6,4 @@ const methods = require('../consts/methods')
  * @param {string} method operation received from the CLI
  * @returns {boolean} status, if method is invalid status flag is changed to false
  */
-module.exports = (method) => {
-  return methods.includes(method)
-}
+module.exports = (method) => methods.includes(method);

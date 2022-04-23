@@ -1,7 +1,8 @@
+/*
 const should = require('chai').should()
 const calculator = require('../../../src/testUnit/calculator')
 describe('Calcultator tests using SHOULD interface from CHAI module: ', function () {
-  describe('Check addTested Function: ', function () {
+  describe('Check findDestination Function: ', function () {
     it('Check the returned value using: value.should.equal(value): ', function () {
       const result = calculator.addTested('text')
       result.should.equal('text tested')
@@ -15,4 +16,4 @@ describe('Calcultator tests using SHOULD interface from CHAI module: ', function
       result.should.have.lengthOf(11)
     })
   })
-})
+}) */

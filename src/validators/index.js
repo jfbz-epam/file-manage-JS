@@ -1,4 +1,4 @@
-const validateMethod = require('../validators/validateMethod')
-const finder = require('./validateRoute')
+const validateMethod = require('./validateMethod');
+const finder = require('./validateRoute');
 
-module.exports = { validateMethod, finder }
+module.exports = { validateMethod, finder };

@@ -1,10 +1,13 @@
 class StructureNode {
   inner;
+
   #name;
+
   constructor(value) {
     this.#name = value;
     this.inner = [];
   }
+
   /**
   * Returns structure name
   * @returns {string} name
@@ -12,6 +15,7 @@ class StructureNode {
   getName() {
     return this.#name;
   }
+
   /**
   * Returns inner contents of the structure
   * @returns {[]} returns array with inner contents
@@ -19,6 +23,7 @@ class StructureNode {
   getInner() {
     return this.inner;
   }
+
   /**
   * fetch child structure from inner contents
   * @param {int} index index of child
@@ -27,6 +32,7 @@ class StructureNode {
   getChild(index) {
     return this.inner[index];
   }
+
   /**
   * adds child structure to inner contents
   * @param {StructureNode} child structure to be added
@@ -34,22 +40,23 @@ class StructureNode {
   addChild(child) {
     this.inner.push(child);
   }
+
   /**
   * removes child structure from inner contents
   * @param {int} index index of child to be removed
   */
   removeChild(index) {
-    this.inner.splice(index, 1); 
+    return this.inner.splice(index, 1).length === 1;
   }
+
   /**
   * finds child structure index inside inner contents
   * @param {string} name name of child
   * @returns {int} child index
   */
   findChildIndex(name) {
-    return this.inner.findIndex(x => x.getName() == name)
+    return this.inner.findIndex((x) => x.getName() === name);
   }
+}
 
-};
-
-module.exports={StructureNode};
+module.exports = { StructureNode };

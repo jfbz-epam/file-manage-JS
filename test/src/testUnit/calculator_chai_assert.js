@@ -1,4 +1,4 @@
-
+/*
 const assert = require('chai').assert
 const calculator = require('../../../src/testUnit/calculator')
 
@@ -18,3 +18,5 @@ describe('Calcultator tests using ASSERT interface from CHAI module: ', function
     })
   })
 })
+
+*/

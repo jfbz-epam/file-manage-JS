@@ -1,4 +1,4 @@
-
+/*
 const expect = require('chai').expect
 const calculator = require('../../../src/testUnit/calculator')
 
@@ -17,4 +17,4 @@ describe('Calcultator tests using EXPECT interface from CHAI module: ', function
       expect(result).to.have.lengthOf(11)
     })
   })
-})
+}) */
