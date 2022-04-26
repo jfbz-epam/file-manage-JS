@@ -9,6 +9,9 @@ const validators = require('../validators');
  * @returns {folder} current returns the location of the folder to be found.
  */
 function findDestination(myStructure, sufix) {
+  if (arguments.length !== findDestination.length) {
+    throw new Error('invalid params');
+  }
   const folders = sufix.split('/');
   let now = folders.shift();
   if (folders.length === 0) {
@@ -30,6 +33,9 @@ function findDestination(myStructure, sufix) {
  * @returns {int} index returns int with folder index. Otherwise a exception is returned.
  */
 function find(name, myStructure) {
+  if (arguments.length !== find.length) {
+    throw new Error('invalid params');
+  }
   const index = myStructure.findChildIndex(name);
   if (index === -1) {
     throw new Error('not found');

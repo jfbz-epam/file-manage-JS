@@ -14,6 +14,9 @@ describe('structure functions check', () => {
       const result = struct.getInner().length;
       assert.equal(result, 2);
     });
+    it('more params than expected', () => {
+      expect(() => struct.getInner('aa', 'bb')).to.throw('invalid params');
+    });
   });
   describe('getChild function', () => {
     const struct = new StructureNode('test');
@@ -29,8 +32,11 @@ describe('structure functions check', () => {
     it('invalid params', () => {
       expect(() => struct.getChild('Javascript')).to.throw('invalid index');
     });
+    it('more params than expected', () => {
+      expect(() => struct.getChild('aa', 'bb')).to.throw('invalid params');
+    });
     it('empty params', () => {
-      expect(() => struct.getChild()).to.throw('invalid index');
+      expect(() => struct.getChild()).to.throw('invalid params');
     });
   });
   describe('removeChild function', () => {
@@ -43,6 +49,15 @@ describe('structure functions check', () => {
       struct.addChild(new StructureNode('1stlevel_1'));
       assert.equal(struct.removeChild(1), true);
     });
+    it('empty params', () => {
+      expect(() => struct.removeChild()).to.throw('invalid params');
+    });
+    it('more params than expected', () => {
+      expect(() => struct.removeChild('aa', 'bb')).to.throw('invalid params');
+    });
+    it('invalid index', () => {
+      expect(() => struct.removeChild('Javascript')).to.throw('invalid index');
+    });
   });
   describe('getName function', () => {
     const struct = new StructureNode('test');
@@ -52,6 +67,9 @@ describe('structure functions check', () => {
     it('function call invalid name', () => {
       assert.notEqual(struct.getName(), 'testA');
     });
+    it('more params than expected', () => {
+      expect(() => struct.getName('aa', 'bb')).to.throw('invalid params');
+    });
   });
   describe('addChild function', () => {
     const struct = new StructureNode('test');
@@ -59,11 +77,32 @@ describe('structure functions check', () => {
       struct.addChild(new StructureNode('1stlevel_0'));
       assert.equal(struct.getInner().length, 1);
     });
-    it('insert invalid child empty params', () => {
-      expect(() => struct.addChild()).to.throw('invalid object');
+    it('call function with empty params', () => {
+      expect(() => struct.addChild()).to.throw('invalid params');
     });
     it('insert invalid child invalid param', () => {
       expect(() => struct.addChild(1)).to.throw('invalid object');
+    });
+    it('more params than expected', () => {
+      expect(() => struct.addChild('aa', 'bb')).to.throw('invalid params');
+    });
+  });
+  describe('findChildIndex', () => {
+    const struct = new StructureNode('test');
+    struct.addChild(new StructureNode('test_child_0'));
+    struct.addChild(new StructureNode('test_child_1'));
+    struct.addChild(new StructureNode('test_child_2'));
+    it('find child index with valid input 1', () => {
+      assert.equal(struct.findChildIndex('test_child_1'), 1);
+    });
+    it('find child index with valid input 2', () => {
+      assert.notEqual(struct.findChildIndex('test_child_1'), 0);
+    });
+    it('more params than expected', () => {
+      expect(() => struct.findChildIndex(struct, struct, struct)).to.throw('invalid params');
+    });
+    it('empty params', () => {
+      expect(() => struct.findChildIndex()).to.throw('invalid params');
     });
   });
 });

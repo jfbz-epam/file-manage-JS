@@ -13,6 +13,9 @@ class StructureNode {
   * @returns {string} name
   */
   getName() {
+    if (arguments.length !== this.getName.length) {
+      throw new Error('invalid params');
+    }
     return this.#name;
   }
 
@@ -21,6 +24,9 @@ class StructureNode {
   * @returns {[]} returns array with inner contents
   */
   getInner() {
+    if (arguments.length !== this.getInner.length) {
+      throw new Error('invalid params');
+    }
     return this.inner;
   }
 
@@ -30,7 +36,9 @@ class StructureNode {
   * @returns {StructureNode} returns child
   */
   getChild(index) {
-    if (Number.isNaN(parseInt(index, 10))) {
+    if (arguments.length !== this.getChild.length) {
+      throw new Error('invalid params');
+    } else if (Number.isNaN(parseInt(index, 10))) {
       throw new Error('invalid index');
     } else {
       return this.inner[index];
@@ -42,6 +50,9 @@ class StructureNode {
   * @param {StructureNode} child structure to be added
   */
   addChild(child) {
+    if (arguments.length !== this.addChild.length) {
+      throw new Error('invalid params');
+    }
     try {
       child.getClassName();
       this.inner.push(child);
@@ -60,7 +71,13 @@ class StructureNode {
   * @param {int} index index of child to be removed
   */
   removeChild(index) {
-    return this.inner.splice(index, 1).length === 1;
+    if (arguments.length !== this.removeChild.length) {
+      throw new Error('invalid params');
+    } else if (Number.isNaN(parseInt(index, 10))) {
+      throw new Error('invalid index');
+    } else {
+      return this.inner.splice(index, 1).length === 1;
+    }
   }
 
   /**
@@ -69,7 +86,11 @@ class StructureNode {
   * @returns {int} child index
   */
   findChildIndex(name) {
-    return this.inner.findIndex((x) => x.getName() === name);
+    if (arguments.length > this.findChildIndex.length || arguments.length === 0) {
+      throw new Error('invalid params');
+    } else {
+      return this.inner.findIndex((x) => x.getName() === name);
+    }
   }
 }
 
