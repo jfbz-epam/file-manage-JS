@@ -30,7 +30,11 @@ class StructureNode {
   * @returns {StructureNode} returns child
   */
   getChild(index) {
-    return this.inner[index];
+    if (Number.isNaN(parseInt(index, 10))) {
+      throw new Error('invalid index');
+    } else {
+      return this.inner[index];
+    }
   }
 
   /**
@@ -38,7 +42,17 @@ class StructureNode {
   * @param {StructureNode} child structure to be added
   */
   addChild(child) {
-    this.inner.push(child);
+    try {
+      child.getClassName();
+      this.inner.push(child);
+      return 'added';
+    } catch (error) {
+      throw new Error('invalid object');
+    }
+  }
+
+  getClassName() {
+    return this.constructor.name;
   }
 
   /**

@@ -19,18 +19,6 @@ describe('Structure utilities check: ', () => {
       const result = find('1stlevel_1', struct);
       assert.equal(result, 1);
     });
-    it('check inner fetch', () => {
-      const result = struct.getInner().length;
-      assert.equal(result, 2);
-    });
-    it('get a valid child', () => {
-      const result = struct.getChild(0);
-      assert.equal(result.getName(), '1stlevel_0');
-    });
-    it('get a invalid child', () => {
-      const result = struct.getChild(2);
-      assert.equal(result, undefined);
-    });
     it('find destination 1 level', () => {
       assert.equal(findDestination(struct, '1stlevel_0').getName(), '1stlevel_0');
     });
@@ -81,12 +69,6 @@ describe('Structure utilities check: ', () => {
       const myInput = ['ALTER', '1stlevel_1/2ndlevel_1'];
       // mutate(myInput, struct);
       expect(() => mutate(struct, myInput)).to.throw('invalid method');
-    });
-    it('remove a invalid child', () => {
-      assert.equal(struct.removeChild(2), false);
-    });
-    it('remove a valid child', () => {
-      assert.equal(struct.removeChild(1), true);
     });
     it('validate invalid method', () => {
       assert.equal(validateMethod('JUICE'), false);
