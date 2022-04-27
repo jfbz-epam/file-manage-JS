@@ -1,4 +1,5 @@
 const methods = require('./methods');
+const inputParseHelper = require('./utilities/inputParse.helper');
 
 /**
  * Receives root folder structure and line from the CLI.
@@ -9,6 +10,7 @@ const methods = require('./methods');
  * @param {string} line command received from CLI
  */
 module.exports = (line, myStructure) => {
+  inputParseHelper(line);
   process.stdout.write(`${line.join(' ')}\n`);
   switch (line[0]) {
     case 'CREATE':
@@ -20,6 +22,6 @@ module.exports = (line, myStructure) => {
       methods.list(myStructure, 0);
       break;
     default:
-      break;
+      throw new Error('invalid method');
   }
 };
